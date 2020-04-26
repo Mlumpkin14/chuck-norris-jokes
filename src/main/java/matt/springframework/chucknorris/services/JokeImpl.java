@@ -1,18 +1,20 @@
 package matt.springframework.chucknorris.services;
 
 import guru.springframework.norris.chuck.ChuckNorrisQuotes;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class JokeImpl {
+@Service
+public class JokeImpl implements Joke {
 
     private final ChuckNorrisQuotes chuckNorrisQuotes;
 
-    public JokeImpl(ChuckNorrisQuotes chuckNorrisQuotes) {
-        this.chuckNorrisQuotes = chuckNorrisQuotes;
+    public JokeImpl() {
+        this.chuckNorrisQuotes = new ChuckNorrisQuotes();
     }
 
-    public String Joke(){
+    @Override
+    public String getJoke() {
         return chuckNorrisQuotes.getRandomQuote();
     }
-
-
 }
